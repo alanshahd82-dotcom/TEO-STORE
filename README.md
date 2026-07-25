@@ -36,3 +36,7 @@ ADMIN_EMAIL=admin@teostore.ma ADMIN_PASSWORD='غيّر-كلمة-المرور' np
 ## النشر
 
 شغّل `npm install` ثم `NODE_ENV=production npm start` مع تخزين دائم لمجلدي `data/` و`uploads/`. يُفضّل ضبط `ADMIN_EMAIL` و`ADMIN_PASSWORD` قبل النشر واستخدام تخزين ملفات دائم أو S3-compatible للإنتاج.
+
+## معاينة GitHub Pages
+
+يتم نشر نسخة معاينة الواجهة تلقائياً من مجلد `public/` عند كل تحديث على `main` عبر GitHub Actions. هذه المعاينة تعرض المتجر والتصفح والسلة بصرياً، بينما إرسال الطلبات والدفع اليدوي ولوحة الإدارة تعمل فقط عند تشغيل `server.js` مع قاعدة البيانات.
