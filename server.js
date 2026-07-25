@@ -61,17 +61,17 @@ async function initDb() {
     const ids = categories.map((c) => insertCategory.run(...c).lastInsertRowid);
     const insertProduct = db.prepare('INSERT INTO products (category_id, name, description, image, price, price_label, badge, popular) VALUES (?, ?, ?, ?, ?, ?, ?, ?)');
     const products = [
-      [ids[0], 'ChatGPT Plus', 'حساب موثوق • تفعيل سريع', 'https://cdn.simpleicons.org/openai/ffffff', 189, 'ابتداءً من 189 د.م', 'الأكثر مبيعاً', 1],
-      [ids[0], 'Claude Pro', 'إنتاجية أذكى، كل يوم', 'https://cdn.simpleicons.org/anthropic/ffffff', 199, 'ابتداءً من 199 د.م', null, 0],
-      [ids[0], 'Gemini Advanced', 'قوة Google AI بين يديك', 'https://cdn.simpleicons.org/googlegemini/ffffff', 159, 'ابتداءً من 159 د.م', null, 0],
-      [ids[1], 'Canva Pro', 'إبداع بلا حدود للمصممين', 'https://cdn.simpleicons.org/canva/ffffff', 119, 'ابتداءً من 119 د.م', 'اختيار TEO', 1],
-      [ids[1], 'CapCut Pro', 'اصنع فيديوهات توقف التمرير', 'https://cdn.simpleicons.org/capcut/ffffff', 99, 'ابتداءً من 99 د.م', null, 0],
-      [ids[2], 'Spotify Premium', 'موسيقى بلا إعلانات', 'https://cdn.simpleicons.org/spotify/ffffff', 79, 'ابتداءً من 79 د.م', 'الأكثر مبيعاً', 1],
-      [ids[2], 'Netflix Premium', 'أفلام ومسلسلات بجودة 4K', 'https://cdn.simpleicons.org/netflix/ffffff', 129, 'ابتداءً من 129 د.م', null, 0],
-      [ids[3], 'بطاقة Apple Gift Card', 'للتطبيقات والألعاب وأكثر', 'https://cdn.simpleicons.org/apple/ffffff', 100, 'قيم متعددة من 50 د.م', null, 0],
-      [ids[4], 'PUBG Mobile UC', 'اشحن شداتك فوراً', 'https://cdn.simpleicons.org/pubg/ffffff', 49, 'ابتداءً من 49 د.م', 'سريع جداً', 1],
-      [ids[4], 'Free Fire Diamonds', 'جواهر فري فاير', 'https://cdn.simpleicons.org/garena/ffffff', 39, 'ابتداءً من 39 د.م', null, 0],
-      [ids[4], 'PlayStation Gift Card', 'متعة ألعاب بلا توقف', 'https://cdn.simpleicons.org/playstation/ffffff', 150, 'قيم متعددة من 50 د.م', null, 0]
+      [ids[0], 'ChatGPT Plus', 'حساب موثوق • تفعيل سريع', 'assets/icons/openai.svg', 189, 'ابتداءً من 189 د.م', 'الأكثر مبيعاً', 1],
+      [ids[0], 'Claude Pro', 'إنتاجية أذكى، كل يوم', 'assets/icons/anthropic.svg', 199, 'ابتداءً من 199 د.م', null, 0],
+      [ids[0], 'Gemini Advanced', 'قوة Google AI بين يديك', 'assets/icons/google.svg', 159, 'ابتداءً من 159 د.م', null, 0],
+      [ids[1], 'Canva Pro', 'إبداع بلا حدود للمصممين', 'assets/icons/canva.svg', 119, 'ابتداءً من 119 د.م', 'اختيار TEO', 1],
+      [ids[1], 'CapCut Pro', 'اصنع فيديوهات توقف التمرير', 'assets/icons/capcut.svg', 99, 'ابتداءً من 99 د.م', null, 0],
+      [ids[2], 'Spotify Premium', 'موسيقى بلا إعلانات', 'assets/icons/spotify.svg', 79, 'ابتداءً من 79 د.م', 'الأكثر مبيعاً', 1],
+      [ids[2], 'Netflix Premium', 'أفلام ومسلسلات بجودة 4K', 'assets/icons/netflix.svg', 129, 'ابتداءً من 129 د.م', null, 0],
+      [ids[3], 'بطاقة Apple Gift Card', 'للتطبيقات والألعاب وأكثر', 'assets/icons/apple.svg', 100, 'قيم متعددة من 50 د.م', null, 0],
+      [ids[4], 'PUBG Mobile UC', 'اشحن شداتك فوراً', 'assets/icons/pubg.svg', 49, 'ابتداءً من 49 د.م', 'سريع جداً', 1],
+      [ids[4], 'Free Fire Diamonds', 'جواهر فري فاير', 'assets/icons/garena.svg', 39, 'ابتداءً من 39 د.م', null, 0],
+      [ids[4], 'PlayStation Gift Card', 'متعة ألعاب بلا توقف', 'assets/icons/playstation.svg', 150, 'قيم متعددة من 50 د.م', null, 0]
     ];
     products.forEach((p) => insertProduct.run(...p));
   }
@@ -181,7 +181,7 @@ app.get('/api/admin/products', adminOnly, (_req, res) => res.json(db.prepare('SE
 app.post('/api/admin/products', adminOnly, (req, res) => {
   const { categoryId, name, description, image, price, priceLabel, badge, popular, active } = req.body;
   if (!categoryId || !name?.trim() || !price) return res.status(400).json({ error: 'الاسم والفئة والسعر مطلوبة' });
-  const result = db.prepare('INSERT INTO products (category_id, name, description, image, price, price_label, badge, popular, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)').run(categoryId, name.trim(), description || '', image || 'https://cdn.simpleicons.org/box/ffffff', Number(price), priceLabel || `ابتداءً من ${price} د.م`, badge || null, popular ? 1 : 0, active === false ? 0 : 1);
+  const result = db.prepare('INSERT INTO products (category_id, name, description, image, price, price_label, badge, popular, active) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)').run(categoryId, name.trim(), description || '', image || 'assets/icons/box.svg', Number(price), priceLabel || `ابتداءً من ${price} د.م`, badge || null, popular ? 1 : 0, active === false ? 0 : 1);
   res.status(201).json({ id: result.lastInsertRowid });
 });
 app.patch('/api/admin/products/:id', adminOnly, (req, res) => {
