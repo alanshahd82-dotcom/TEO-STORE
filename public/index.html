@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101b3a" />
+  <title>TEO STORE — خدماتك الرقمية في مكان واحد</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div id="toast" class="toast" role="status"></div>
+  <div id="app">
+    <div class="top-strip"><div class="container trust-row"><span>بائع معتمد</span><span>دفع آمن</span><span>تسليم فوري</span><span>دعم 24/7</span></div></div>
+    <header class="site-header"><div class="container header-main">
+      <button class="mobile-menu" aria-label="القائمة" onclick="toggleMobileNav()">☰</button>
+      <a class="brand" href="#top"><span class="brand-mark">T</span><span>TEO <b>STORE</b></span></a>
+      <div class="search-wrap"><input id="searchInput" type="search" placeholder="ابحث عن خدمة أو بطاقة..." /><button onclick="searchProducts()">⌕</button></div>
+      <nav class="header-actions"><button onclick="openTrack()">طلباتي</button><button class="icon-btn" onclick="toggleCart()" aria-label="السلة">🛒<i id="cartCount">0</i></button></nav>
+    </div><div id="mobileNav" class="mobile-nav"><button onclick="scrollToId('categories')">الفئات</button><button onclick="openTrack()">تتبع طلب</button><button onclick="openAdmin()">لوحة الإدارة</button></div>
+    <div class="container category-nav" id="categories"><button class="active" data-category="all" onclick="filterCategory('all', this)">كل الخدمات</button></div>
+  </header>
+
+  <main id="top">
+    <section class="hero container"><div class="hero-copy"><div class="eyebrow">TEO STORE / خدمات رقمية بثقة</div><h1>كل ما تحتاجه<br /><em>في عالمك الرقمي</em></h1><p>اشتراكات، بطاقات هدايا وشحن ألعاب. وصول سريع، أسعار واضحة، وخدمة تتعامل معك بصدق.</p><div class="hero-actions"><button class="primary" onclick="scrollToId('catalog')">استكشف المتجر <span>←</span></button><button class="text-button" onclick="openTrack()">تتبع طلبك <span>↗</span></button></div><div class="hero-notes"><span>✓ تسليم خلال دقائق</span><span>✓ دعم حقيقي بالعربية</span></div></div><div class="hero-art"><div class="glow glow-one"></div><div class="glow glow-two"></div><div class="floating-card card-one"><small>أكثر طلباً</small><strong>ChatGPT</strong><span>Plus</span></div><div class="floating-card card-two"><span class="mini-icon">✦</span><strong>خصم خاص</strong><small>هذا الأسبوع</small></div><div class="hero-orb"><span>TEO</span><small>digital essentials</small></div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div></div></section>
+    <section class="benefits"><div class="container benefits-grid"><div><span class="benefit-icon">✦</span><span><b>تسليم فوري</b><small>بعد تأكيد التحويل</small></span></div><div><span class="benefit-icon">◈</span><span><b>منتجات موثوقة</b><small>نراجع كل طلب يدوياً</small></span></div><div><span class="benefit-icon">◉</span><span><b>دفع آمن</b><small>تحويل محلي بسيط</small></span></div><div><span class="benefit-icon">?</span><span><b>دعم 24/7</b><small>نحن هنا لمساعدتك</small></span></div></div></section>
+    <section class="catalog container" id="catalog"><div class="section-heading"><div><span class="eyebrow">اختر ما يناسبك</span><h2>الخدمات الرقمية</h2></div><span id="resultsLabel" class="results-label"></span></div><div id="catalogContent"></div></section>
+    <section class="why"><div class="container why-inner"><div><span class="eyebrow">لماذا TEO STORE؟</span><h2>تجربة بسيطة،<br /><em>ثقة تدوم.</em></h2><p>نؤمن أن شراء الخدمة الرقمية لا يجب أن يكون معقداً. اختر، حوّل، وأرسل الإثبات. الباقي علينا.</p></div><div class="why-points"><div><strong>01</strong><span><b>وضوح من البداية</b><small>أسعار وشروط واضحة بدون مفاجآت.</small></span></div><div><strong>02</strong><span><b>مراجعة بشرية</b><small>كل طلب يمر على فريقنا قبل التسليم.</small></span></div><div><strong>03</strong><span><b>وجود حقيقي</b><small>دعم عربي متاح وقت ما تحتاجه.</small></span></div></div></div></section>
+    <section class="faq container"><div class="section-heading"><div><span class="eyebrow">أسئلة شائعة</span><h2>قبل أن تشتري</h2></div></div><div class="faq-grid"><details open><summary>كيف يتم استلام الطلب؟ <span>+</span></summary><p>بعد تحويل المبلغ، ارفع صورة الإثبات ورقم العملية. يراجع فريقنا الطلب، ثم تظهر بيانات التسليم مباشرة في صفحة تتبع طلبك.</p></details><details><summary>كم تستغرق المراجعة؟ <span>+</span></summary><p>عادة تتم مراجعة الطلبات خلال دقائق. في أوقات الذروة قد تحتاج المراجعة إلى وقت أطول قليلاً.</p></details><details><summary>ماذا أفعل إذا واجهت مشكلة؟ <span>+</span></summary><p>تواصل معنا عبر البريد الموضح في صفحة الدفع مع رقم طلبك، وسيتابع فريق الدعم معك حتى الحل.</p></details><details><summary>هل يمكنني استرجاع المبلغ؟ <span>+</span></summary><p>تطبق سياسة الاسترجاع حسب نوع المنتج وحالته. تواصل معنا قبل التسليم لمناقشة طلبك.</p></details></div></section>
+  </main>
+  <footer><div class="container footer-grid"><div><a class="brand" href="#top"><span class="brand-mark">T</span><span>TEO <b>STORE</b></span></a><p>وجهتك الموثوقة للخدمات الرقمية.</p></div><div><h4>المتجر</h4><a href="#catalog">كل الخدمات</a><a href="#catalog">اشتراكات الذكاء الاصطناعي</a><a href="#catalog">شحن الألعاب</a></div><div><h4>المساعدة</h4><button onclick="openTrack()">تتبع طلب</button><a href="#faq">الأسئلة الشائعة</a><a href="mailto:support@teostore.ma">تواصل معنا</a></div><div><h4>لأصحاب المتجر</h4><button onclick="openAdmin()">دخول لوحة الإدارة</button><small>إدارة الطلبات والمنتجات والدفع</small></div></div><div class="container footer-bottom"><span>© 2026 TEO STORE</span><span>صُنع بعناية للعالم العربي</span></div></footer>
+  <div id="modalRoot"></div><aside id="cartDrawer" class="drawer"><div class="drawer-head"><h3>سلة المشتريات</h3><button onclick="toggleCart()">×</button></div><div id="cartItems" class="cart-items"></div><div class="cart-foot"><div><span>الإجمالي</span><strong id="cartTotal">0 د.م</strong></div><button class="primary full" onclick="openCheckout()">متابعة الدفع <span>←</span></button></div></aside><div id="drawerBackdrop" class="backdrop" onclick="toggleCart()"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
